@@ -17,8 +17,8 @@ func New{{entityUpCase}}Postgres(DB *gorm.DB) *Repository{{entityUpCase}} {
 	return &Repository{{entityUpCase}}{DB: DB}
 }
 
-func (r *Repository{{entityUpCase}}) GetFromID(id int) (ityUpCase %>, err error) {
-	r.DB.First(&
+func (r *Repository{{entityUpCase}}) GetFromID(id int) ({{entityLowerCase}} *entity.Entity{{entityUpCase}}, err error) {
+	r.DB.First(&{{entityLowerCase}}, id)
 
 	return
 }
@@ -73,20 +73,20 @@ func (r *Repository{{entityUpCase}}) GetAll(searchParams entity.SearchEntity{{en
 	return response, totalRegisters, nil
 }
 
-func (r *Repository{{entityUpCase}}) Create(ityUpCase %>) (err error) {
-	err = r.DB.Create(&
+func (r *Repository{{entityUpCase}}) Create({{entityLowerCase}} *entity.Entity{{entityUpCase}}) (err error) {
+	err = r.DB.Create(&{{entityLowerCase}}).Error
 
 	return err
 }
 
-func (r *Repository{{entityUpCase}}) Update(ityUpCase %>) (err error) {
-	_, err = r.GetFromID(int(
+func (r *Repository{{entityUpCase}}) Update({{entityLowerCase}} *entity.Entity{{entityUpCase}}) (err error) {
+	_, err = r.GetFromID(int({{entityLowerCase}}.ID))
 
 	if err != nil {
 		return err
 	}
 
-	err = r.DB.Save(&
+	err = r.DB.Save(&{{entityLowerCase}}).Error
 
 	return err
 }

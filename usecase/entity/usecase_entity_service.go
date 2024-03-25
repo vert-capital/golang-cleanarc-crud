@@ -1,4 +1,4 @@
-package usecase_
+package usecase_{{entityLowerCase}}
 
 import "app/entity"
 
@@ -18,12 +18,12 @@ func (u *Usecase{{entityUpCase}}) GetAll(searchParams entity.SearchEntity{{entit
 	return u.repo.GetAll(searchParams)
 }
 
-func (u *Usecase{{entityUpCase}}) Create(ityUpCase %>) error {
-	return u.repo.Create(
+func (u *Usecase{{entityUpCase}}) Create({{entityLowerCase}} *entity.Entity{{entityUpCase}}) error {
+	return u.repo.Create({{entityLowerCase}})
 }
 
-func (u *Usecase{{entityUpCase}}) Update(ityUpCase %>) error {
-	return u.repo.Update(
+func (u *Usecase{{entityUpCase}}) Update({{entityLowerCase}} *entity.Entity{{entityUpCase}}) error {
+	return u.repo.Update({{entityLowerCase}})
 }
 
 func (u *Usecase{{entityUpCase}}) Delete(id int) error {
