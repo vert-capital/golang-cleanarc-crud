@@ -9,24 +9,24 @@ import (
 	"gorm.io/gorm"
 )
 
-type Repository{{ entityUpCase }} struct {
+type Repository{{entityUpCase}} struct {
 	DB *gorm.DB
 }
 
-func New{{ entityUpCase }}Postgres(DB *gorm.DB) *Repository{{ entityUpCase }} {
-	return &Repository{{ entityUpCase }}{DB: DB}
+func New{{entityUpCase}}Postgres(DB *gorm.DB) *Repository{{entityUpCase}} {
+	return &Repository{{entityUpCase}}{DB: DB}
 }
 
-func (r *Repository{{ entityUpCase }}) GetFromID(id int) (ityUpCase %>, err error) {
+func (r *Repository{{entityUpCase}}) GetFromID(id int) (ityUpCase %>, err error) {
 	r.DB.First(&
 
 	return
 }
 
-func (r *Repository{{ entityUpCase }}) GetAll(searchParams entity.SearchEntity{{ entityUpCase }}Params) (response []entity.Entity{{ entityUpCase }}, totalRegisters int64, err error) {
+func (r *Repository{{entityUpCase}}) GetAll(searchParams entity.SearchEntity{{entityUpCase}}Params) (response []entity.Entity{{entityUpCase}}, totalRegisters int64, err error) {
 	offset := (searchParams.Page) * searchParams.PageSize
 
-	qry := r.DB.Model(entity.Entity{{ entityUpCase }}{})
+	qry := r.DB.Model(entity.Entity{{entityUpCase}}{})
 
 	if gin.IsDebugging() {
 		qry = qry.Debug()
@@ -73,13 +73,13 @@ func (r *Repository{{ entityUpCase }}) GetAll(searchParams entity.SearchEntity{{
 	return response, totalRegisters, nil
 }
 
-func (r *Repository{{ entityUpCase }}) Create(ityUpCase %>) (err error) {
+func (r *Repository{{entityUpCase}}) Create(ityUpCase %>) (err error) {
 	err = r.DB.Create(&
 
 	return err
 }
 
-func (r *Repository{{ entityUpCase }}) Update(ityUpCase %>) (err error) {
+func (r *Repository{{entityUpCase}}) Update(ityUpCase %>) (err error) {
 	_, err = r.GetFromID(int(
 
 	if err != nil {
@@ -91,8 +91,8 @@ func (r *Repository{{ entityUpCase }}) Update(ityUpCase %>) (err error) {
 	return err
 }
 
-func (r *Repository{{ entityUpCase }}) Delete(id int) (err error) {
-	err = r.DB.Delete(&entity.Entity{{ entityUpCase }}{}, id).Error
+func (r *Repository{{entityUpCase}}) Delete(id int) (err error) {
+	err = r.DB.Delete(&entity.Entity{{entityUpCase}}{}, id).Error
 
 	return err
 }
